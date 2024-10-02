@@ -1,5 +1,5 @@
 
-# Transfer-Learning with ResNet
+# Transfer-Learning with ResNet for Pathology Classification 
 
 ## Group Information
 - **Team Name:** N
