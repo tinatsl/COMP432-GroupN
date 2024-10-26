@@ -14,6 +14,8 @@ def get_loaders(data_path, test_ratio, img_size, batch_size=32):
             path to target dataset
     test_ratio: float
             ratio for the test set with relation to the train set
+    img_size: int
+            specifies expected img size for the model
     batch_size: int
             batch size for data loader
 
