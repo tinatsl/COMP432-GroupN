@@ -51,3 +51,14 @@ def get_loaders(data_path, test_ratio, img_size, batch_size=32):
 
     return train_loader, test_loader
 
+
+# Extract features and labels compatible with grid search
+def get_data(loader):
+
+    X, y = zip(*[(data, labels) for data, labels in loader])
+
+    # Concatenate along the first dimension
+    X = torch.cat(X, dim=0).cpu().numpy()
+    y = torch.cat(y, dim=0).long().cpu().numpy()
+
+    return X, y
