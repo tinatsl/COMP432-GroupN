@@ -42,7 +42,7 @@ To successfully run the code, you will need the following libraries:
   pip install scikit-learn
   pip install scikit-image
   pip install opencv-python
-  pip install torch, torchvision
+  pip install torch, torchvision, torchsummary, skorch
   ```
 
 To read the images in the correct format, use LFS extension:
