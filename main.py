@@ -26,11 +26,7 @@ train_loader, test_loader = get_loaders(dataset_loc, 0.3, 224, 32)
 X_train, y_train = get_data(train_loader)
 X_test, y_test = get_data(test_loader)
 
-# Only needed for parameter testing - Comment out if training only
-X = np.concatenate((X_train, X_test), axis=0)
-y = np.concatenate((y_train, y_test), axis=0)
-
-# show_samples(X, y, 3)
+# show_samples(X_train, y_train, 3)
 
 # Instantiate model
 num_classes = 3
@@ -51,17 +47,19 @@ net = NeuralNetClassifier(
 )
 
 param_grid = {
-    'lr': [0.0001, 0.001, 0.01,],
+    'lr': [0.0001, 0.001, 0.01],
     'max_epochs': [25, 50],
     'batch_size': [32, 64],
-    'optimizer': [optim.Adam]
+    'optimizer': [optim.AdamW, optim.SGD],
+    'optimizer__weight_decay': [0, 0.01, 0.1],
+    'optimizer__momentum': [0.9, 0.95],
 }
 
-grid_search = GridSearchCV(net, param_grid, refit=True, cv=3, scoring='accuracy', verbose=2)
-grid_search.fit(X, y)
+random_search = RandomizedSearchCV(net, param_grid, n_iter=10, refit=True, cv=3, scoring='accuracy', verbose=2)
+random_search.fit(X_train, y_train)
 
-print("Best Parameters:", grid_search.best_params_)
-print("Best Score:", grid_search.best_score_)
+print("Best Parameters:", random_search.best_params_)
+print("Best Score:", random_search.best_score_)
 
 
 
