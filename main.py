@@ -53,6 +53,7 @@ param_grid = {
     'optimizer': [optim.AdamW, optim.SGD],
     'optimizer__weight_decay': [0, 0.01, 0.1],
     'optimizer__momentum': [0.9, 0.95],
+    'optimizer__nesterov': [True, False]
 }
 
 random_search = RandomizedSearchCV(net, param_grid, n_iter=10, refit=True, cv=3, scoring='accuracy', verbose=2)
