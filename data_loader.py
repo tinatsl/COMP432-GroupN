@@ -29,7 +29,7 @@ def get_loaders(data_path, img_size=224, batch_size=32):
     transform = transforms.Compose([
         transforms.Resize((img_size, img_size)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.7626, 0.5242, 0.7113], std=[0.1492, 0.1949, 0.1401])
+        transforms.Normalize(mean=[0.7626, 0.5242, 0.7113], std=[0.1492, 0.1949, 0.1401]) # mean, std tensor calculated on dataset 1
     ])
 
     # Load the full dataset

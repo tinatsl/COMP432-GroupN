@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, f1_score
+from sklearn.metrics import classification_report, accuracy_score
 from matplotlib import pyplot as plt
 
 # Loss and accuracy graph
@@ -9,24 +9,24 @@ def plot_metrics(epochs, train_losses, train_accuracies, val_losses=None, val_ac
 
     # Training and validation loss
     plt.subplot(1, 2, 1)
-    plt.plot(epochs, train_losses, label='train_loss', color='turquoise')
+    plt.plot(epochs, train_losses, label='train_loss', color='#ec1a24')
     if val_losses is not None:
-        plt.plot(epochs, val_losses, label='valid_loss', color='salmon')
+        plt.plot(epochs, val_losses, label='valid_loss', color='#11469b')
     plt.title('Loss per Epoch')
-    plt.xlabel('Epoch')
+    plt.xlabel('# Epoch')
     plt.ylabel('Loss')
-    plt.grid(alpha=0.4)
+    plt.grid(False)
     plt.legend()
 
     # Training and validation accuracy
     plt.subplot(1, 2, 2)
-    plt.plot(epochs, train_accuracies, label='train_accuracy', color='blue')
+    plt.plot(epochs, train_accuracies, label='train_accuracy', color='#ec1a24')
     if val_accuracies is not None:
-        plt.plot(epochs, val_accuracies, label='valid_accuracy', color='orange')
+        plt.plot(epochs, val_accuracies, label='valid_accuracy', color='#11469b')
     plt.title('Accuracy per Epoch')
-    plt.xlabel('Epoch')
+    plt.xlabel('# Epoch')
     plt.ylabel('Accuracy')
-    plt.grid(alpha=0.4)
+    plt.grid(False)
     plt.legend()
 
     if save_path:
@@ -35,7 +35,7 @@ def plot_metrics(epochs, train_losses, train_accuracies, val_losses=None, val_ac
     plt.show()
 
 # Training function
-def train_model(model, train_loader, val_loader, criterion, optimizer, max_epoch, device, patience=20):
+def train_model(model, train_loader, val_loader, criterion, optimizer, max_epoch, device, class_names, patience=20):
     best_loss = float('inf')
     early_stop_counter = 0
 
@@ -116,10 +116,10 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, max_epoch
 
     # Final Training and Validation Reports
     print("\nTRAINING REPORT:")
-    print(classification_report(train_labels, train_predictions, target_names=['MUS','NORM','STR']))
+    print(classification_report(train_labels, train_predictions, target_names=class_names))
 
     print("\nVALIDATION REPORT:")
-    print(classification_report(val_labels, val_predictions, target_names=['MUS','NORM','STR']))
+    print(classification_report(val_labels, val_predictions, target_names=class_names))
 
     print("TRAINING COMPLETE.")
 
