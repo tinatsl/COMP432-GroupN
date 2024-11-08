@@ -18,7 +18,7 @@
 ## Project Overview
 Both computer vision and deep learning have become crucial tools in the healthcare field. The CNN-based algorithms show promising results in medical imaging, notably in pathology diagnosis.  CNN models were also robust enough to generalize among different medical concerns regarding image classification. For this project, we aim to apply the CNN-based algorithms to the various classifications of colorectal, prostate cancer and animal faces as computer vision tasks.
 
-Cancer diagnosis, to this day, remains a milestone amongst pathology experts facing workloads that impact the efficiency and accuracy of the diagnosis. The CNN models aim to assist medical professionals with providing insights that increase accuracy and reduce human error. One of the main problems can be associated with transfer learning, where CNNs pre-trained on one dataset are applied towards feature extraction and classification on other datasets, and while this is helpful to generalize across multiple applications, it still poses the risk of overfitting and hence loss of accuracy.  
+// TO DO
 
 
 ## Project Parts
