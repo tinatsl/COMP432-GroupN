@@ -16,7 +16,7 @@ from data_loader import get_loaders, get_data
 
 # Get data
 
-dataset_loc = './dataset_1/'
+dataset_loc = './data/dataset_1/'
 num_classes = 3
 
 torch.manual_seed(42)

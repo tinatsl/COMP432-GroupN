@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.metrics import classification_report, accuracy_score
 from matplotlib import pyplot as plt
 
+
 # Loss and accuracy graph
 def plot_metrics(epochs, train_losses, train_accuracies, val_losses=None, val_accuracies=None, save_path=None):
     plt.figure(figsize=(12, 5))
@@ -33,6 +34,7 @@ def plot_metrics(epochs, train_losses, train_accuracies, val_losses=None, val_ac
         plt.savefig(save_path, format='png', dpi=300)
 
     plt.show()
+
 
 # Training function
 def train_model(model, train_loader, val_loader, criterion, optimizer, max_epoch, device, class_names, patience=20):
