@@ -11,7 +11,7 @@ from model_eval import test_model
 from model_train import train_model
 from samples import show_samples
 
-dataset_loc = './data/dataset_1/'
+dataset_loc = './data/1/'
 num_classes = 3
 class_names = ['MUS', 'NORM', 'STR']
 
