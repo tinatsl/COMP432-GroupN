@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from torchvision.datasets import ImageFolder
 import numpy as np
 
-dataset_loc = './1/'
+dataset_loc = './data/1/'
 
 dataset = ImageFolder(root=dataset_loc)
 class_names = dataset.classes

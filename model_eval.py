@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.manifold import TSNE
 
+
 def plot_confusion_matrix(true_labels, pred_labels, class_names):
     cm = confusion_matrix(true_labels, pred_labels)
     plt.figure(figsize=(8, 6))
@@ -13,6 +14,7 @@ def plot_confusion_matrix(true_labels, pred_labels, class_names):
     plt.ylabel('True Labels')
     plt.title('Confusion Matrix')
     plt.show()
+
 
 def plot_tsne(features, labels, class_names):
     # Apply t-SNE - 2D
@@ -42,6 +44,7 @@ def plot_tsne(features, labels, class_names):
     plt.ylabel("t-SNE Dimension 2")
     plt.show()
 
+
 def report_metrics(test_labels, test_predictions, class_names):
     # Scikit-learn classification report
     report = classification_report(test_labels, test_predictions, target_names=class_names)
@@ -49,6 +52,7 @@ def report_metrics(test_labels, test_predictions, class_names):
 
     # Plot confusion matrix
     plot_confusion_matrix(test_labels, test_predictions, class_names=class_names)
+
 
 def test_model(model, test_loader, device, class_names):
     model.eval()
