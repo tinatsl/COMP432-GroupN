@@ -4,17 +4,13 @@ import torchvision.transforms as transforms
 from torchvision.datasets import ImageFolder
 
 
-def get_norm_param(data_path, img_size=224, batch_size=32):
-    """Calculate the mean and std of a dataset from the given image path.
+def get_norm_param(train_loader):
+    """Calculate the mean and std of a dataset from the given loader.
 
     Parameters
     ----------
-    data_path: str
-        Path to the target dataset
-    img_size: int
-        Expected size of one data sample for resizing
-    batch_size: int
-        Batch size for data loader to iterate over dataset
+    train_loader: DataLoader
+        Temp training set loader
 
     Returns
     -------
@@ -28,16 +24,11 @@ def get_norm_param(data_path, img_size=224, batch_size=32):
         transforms.ToTensor()
     ])
 
-    # Create an ImageFolder dataset
-    dataset = ImageFolder(data_path, transform=transform)
-
-    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
-
     mean = 0.0
     std = 0.0
     total_images_count = 0
 
-    for images, _ in data_loader:
+    for images, _ in train_loader:
         batch_samples = images.size(0)
         images = images.view(batch_samples, images.size(1), -1)
         mean += images.mean(2).sum(0)
@@ -49,8 +40,7 @@ def get_norm_param(data_path, img_size=224, batch_size=32):
 
     return mean, std
 
-
-def get_loaders(data_path, img_size=224, batch_size=32, mean=None, std=None):
+def get_loaders(data_path, img_size=224, batch_size=32):
     """ This function generates train, validation, and test data loaders
 
     Parameters
@@ -76,17 +66,13 @@ def get_loaders(data_path, img_size=224, batch_size=32, mean=None, std=None):
         loader for the test set
     """
 
-    if mean is None or std is None:
-        mean, std = get_norm_param(data_path, img_size, batch_size)
-
-    transform = transforms.Compose([
+    transform_default = transforms.Compose([
         transforms.Resize((img_size, img_size)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=mean, std=std)
+        transforms.ToTensor()
     ])
 
     # Load the full dataset
-    dataset = ImageFolder(data_path, transform=transform)
+    dataset = ImageFolder(data_path, transform=transform_default)
 
     # Calculate the sizes for train, validation, and test sets
     train_size = int(0.7 * len(dataset))
@@ -99,6 +85,21 @@ def get_loaders(data_path, img_size=224, batch_size=32, mean=None, std=None):
     train_set, valid_set, test_set = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size],
                                                                    generator=generator)
 
+    train_loader_temp = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+
+    # Compute mean and std from the training set
+    mean, std = get_norm_param(train_loader_temp)
+
+    # Create a transform with normalization
+    transform_normalized = transforms.Compose([
+        transforms.Resize((img_size, img_size)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=mean, std=std)
+    ])
+
+    # Apply the normalized transform to the datasets
+    dataset.transform = transform_normalized
+    
     # Create data loaders
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(valid_set, batch_size=batch_size, shuffle=False)
