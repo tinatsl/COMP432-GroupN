@@ -16,10 +16,9 @@
 | Gulnoor Kaur| 40114998 |
 
 ## Project Overview
-Both computer vision and deep learning have become crucial tools in the healthcare field. The CNN-based algorithms show promising results in medical imaging, notably in pathology diagnosis.  CNN models were also robust enough to generalize among different medical concerns regarding image classification. For this project, we aim to apply the CNN-based algorithms to the various classifications of colorectal, prostate cancer and animal faces as computer vision tasks.
+Among deep learning methodologies, transfer learning serves as an efficient way of addressing data scarcity by reusing knowledge from one domain to another. Pre-trained CNN encoders can extract features from novel data, thus eliminating the need for full retraining. 
 
-// TO DO
-
+The key challenge posed by encoder transferability is ensuring that the feature extraction from the source to the target data is generalizable. The domain shift can cause performance losses if the transferred feature representations are irrelevant to the new input, or if the model is too complex to transfer knowledge.  In this project, we assess the effectiveness of a pre-trained encoder in generalising to new data, comparing its performance on data from similar and different domains as well as evaluating this approach against ImageNet fine-tuning approach. 
 
 ## Project Parts
 The project is divided into two parts:
