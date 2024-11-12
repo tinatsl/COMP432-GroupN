@@ -22,8 +22,8 @@ The key challenge posed by encoder transferability is ensuring that the feature 
 
 ## Project Parts
 The project is divided into two parts:
-1. **Data Pre-Processing, Training Stage**
-2. **Transfer Learning and Deep Evaluation**
+1. **Data Transformation and ResNet18 Training**
+2. **Encoder Transfer and Evaluation**
 
 
 ---
