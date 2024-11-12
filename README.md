@@ -18,7 +18,7 @@
 ## Project Overview
 Among deep learning methodologies, transfer learning serves as an efficient way of addressing data scarcity by reusing knowledge from one domain to another. Pre-trained CNN encoders can extract features from novel data, thus eliminating the need for full retraining. 
 
-The key challenge posed by encoder transferability is ensuring that the feature extraction from the source to the target data is generalizable. The domain shift can cause performance losses if the transferred feature representations are irrelevant to the new input, or if the model is too complex to transfer knowledge.  In this project, we assess the effectiveness of a pre-trained encoder in generalising to new data, comparing its performance on data from similar and different domains as well as evaluating this approach against ImageNet fine-tuning approach. 
+The key challenge posed by encoder transferability is ensuring that the feature extraction from the source to the target data is generalizable. The domain shift can cause performance losses if the transferred feature representations are irrelevant to the new input, or if the model is too complex to transfer knowledge.  In this project, we assess the effectiveness of a pre-trained encoder in generalising to new data, comparing its performance on data from similar and different domains as well as evaluating this approach against ImageNet fine-tuning. 
 
 ## Project Parts
 The project is divided into two parts:
