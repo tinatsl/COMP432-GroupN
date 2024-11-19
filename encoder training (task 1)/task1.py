@@ -5,19 +5,18 @@ import torchvision.models as models
 from torchsummary import summary
 
 # Import functions
-from data_loader import get_loaders, get_data
+from data_loader import get_loaders
 from model_eval import test_model
 from model_train import train_model
 # from samples import show_samples
 
-dataset_loc = './data/1/'
+dataset_loc = '../data/1/'
 num_classes = 3
 class_names = ['MUS', 'NORM', 'STR']
 
 torch.manual_seed(42)
 
-train_loader, valid_loader, test_loader = get_loaders(dataset_loc, 224, 18, mean=[0.7626, 0.5242, 0.7113],
-                                                      std=[0.1492, 0.1949, 0.1401])
+train_loader, valid_loader, test_loader = get_loaders(dataset_loc, 224, 18)
 
 # Initialize model
 resnet_18 = models.resnet18(weights=None)
