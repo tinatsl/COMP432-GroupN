@@ -19,10 +19,6 @@ def get_norm_param(train_loader):
     std: tensor
         Standard deviation values of the dataset channels
     """
-    transform = transforms.Compose([
-        transforms.Resize((img_size, img_size)),
-        transforms.ToTensor()
-    ])
 
     mean = 0.0
     std = 0.0
