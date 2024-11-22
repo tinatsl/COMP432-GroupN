@@ -1,13 +1,3 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torchvision.models as models
-from torchsummary import summary
-
-# Import functions
-from data_loader import get_loaders
-from model_eval import test_model
-from model_train import train_model
 # from samples import show_samples
 
 dataset_loc = '../data/1/'
@@ -20,7 +10,7 @@ train_loader, valid_loader, test_loader = get_loaders(dataset_loc, 224, 18)
 
 # Initialize model
 resnet_18 = models.resnet18(weights=None)
-resnet_18.fc = nn.Linear(resnet_18.fc.in_features, num_classes)
+resnet_18.fc = nn.Identity()
 
 # Visualize model summary
 # summary(resnet_18, input_size=(3, 224, 224))
@@ -35,10 +25,3 @@ resnet_18.fc = nn.Linear(resnet_18.fc.in_features, num_classes)
 # Test model
 resnet_18.load_state_dict(torch.load('best_weights.pth', weights_only=True))
 test_model(resnet_18, test_loader, device='cpu', class_names=class_names)
-
-
-
-
-
-
-
