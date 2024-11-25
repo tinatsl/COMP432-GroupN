@@ -103,6 +103,53 @@ def get_loaders(data_path, img_size=224, batch_size=32):
 
     return train_loader, val_loader, test_loader
 
+def get_loader(data_path, img_size=224, batch_size=32):
+    """ This function generates the data loader for the whole data set
+    Parameters
+    ----------
+    data_path: str
+        path to target dataset
+    img_size: int
+        expected size of one data sample
+    batch_size: int
+        batch size for data loader
+    mean: list or tensor, optional
+        Mean for normalization; if None, no normalization is applied
+    std: list or tensor, optional
+        Standard deviation for normalization; if None, no normalization is applied
+    Returns
+    -------
+    test_loader: DataLoader
+        loader for the test set
+    """
+
+    transform_default = transforms.Compose([
+        transforms.Resize((img_size, img_size)),
+        transforms.ToTensor()
+    ])
+
+    # Load the full dataset
+    dataset = ImageFolder(data_path, transform=transform_default)
+
+    dataset_loader_temp = DataLoader(dataset, batch_size=batch_size, shuffle=False)
+
+    # Compute mean and std from the set
+    mean, std = get_norm_param(dataset_loader_temp)
+
+    # Create a transform with normalization
+    transform_normalized = transforms.Compose([
+        transforms.Resize((img_size, img_size)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=mean, std=std)
+    ])
+
+    # Apply the normalized transform to the datasets
+    dataset.transform = transform_normalized
+    
+    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
+
+    return data_loader
+
 
 # Extract features and labels compatible with best param search
 def get_data(loader):
