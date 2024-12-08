@@ -1,5 +1,5 @@
 
-# Transfer-Learning with ResNet for Pathology Classification 
+# CNN Encoder Transfer with ResNet-18 
 
 ## Group Information
 - **Team Name:** N
@@ -28,8 +28,6 @@ The project is divided into two parts:
 
 ---
 
-## Task 1: Data Pre-Processing and ResNet Training
-
 ### Prerequisites
 
 To successfully run the code, you will need the following libraries:
@@ -54,18 +52,16 @@ Versions of the datasets used in the project as well as full datasets can be obt
 
 Alternatively, these datasets can be found in the "data" repository as 1, 2, and 3 respectively. 
 
-### Model Training 
+## Task 1: Data Pre-Processing and ResNet Training
+
+### Model Training and Validation
 
 > ⚠️ **Warning:** *Certain programs below permanenty alter directories by deleting files.
 > Make sure folder paths are specified correctly before running.*
 
-* [program_name.py](#)
-  * **Description:** Desribe what the program does.
-
-### Model Validation
-
-* [program_name.py](#)
-  * **Description:** Desribe what the program does.
+* [task1.py](task1/task1.py)
+  * **Description:** This program loads the colonoscopy dataset and imports a [custom training function](task1/model_train.py) to train ResNet-18 from scratch. The model is instantiated using the torchvision module. The model is then evaluated on a test dataset using the [custom evaluation function](task1/model_eval.py). 
+  * To retrain the model, uncomment the train_model criterion, optimizer and function on lines 29-32 and run [task1.py](task1/task1.py) directly. The program is set to load best model weights and show a classification report. 
 
 ## Task 2: Encoder Transfer 
 
