@@ -61,7 +61,7 @@ Alternatively, these datasets can be found in the "data" repository as 1, 2, and
 
 * [task1.py](task1/task1.py)
   * **Description:** This program loads the colonoscopy dataset and imports a [custom training function](task1/model_train.py) to train ResNet-18 from scratch. The model is instantiated using the torchvision module. The model is then evaluated on a test dataset using the [custom evaluation function](task1/model_eval.py). 
-  * To retrain the model, uncomment the train_model criterion, optimizer and function on lines 29-32 and run [task1.py](task1/task1.py) directly. The program is set to load best model weights and show a classification report. 
+  * To retrain the model, uncomment the train_model criterion, optimizer and function on lines 29-32 and run [task1.py](task1/task1.py) directly. The program by default is set to load best model weights and show a classification report. 
 
 ## Task 2: Encoder Transfer 
 
@@ -75,6 +75,6 @@ Alternatively, these datasets can be found in the "data" repository as 1, 2, and
 The code can be executed in the PyCharm IDE, or in Colab as follows:
 
 ```sh
-PS C:\PATH_TO_PROJECT> python 'program_name.py'
+PS C:\PATH_TO_PROJECT> python 'task1.py'
 ```
 
