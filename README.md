@@ -8,7 +8,7 @@
 - **Team Members:**
   
  |   Name |   Student ID    |  User    |
- |---|---|
+ |---|---|---|
 | Luiza Matan | 40212529 | LuizaMatan |
 | Nicolas Moscato-Barbeau | 40210244 | moscaton |
 | Valentyna Tsilinchuk| 40046092 | tinatsl |
