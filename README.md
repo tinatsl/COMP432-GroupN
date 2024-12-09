@@ -72,10 +72,10 @@ Alternatively, these datasets can be found in the "data" repository as 1, 2, and
  
 ### Samples Classification 
 * [Dataset2_classification.ipynb](task2/Classification_TrainedModel/Dataset2_classification.ipynb)
-  * **Description:** Desribe what the program does.
+  * **Description:** Run this program to visualize feature classification with SVM on dataset 2 with the trained model. This code trains and evaluates the performance of an SVM classifier on features extracted from a ResNet-18 model trained from scratch. Simply run each cell in the .ipynb in order to see the output report and matrix.
  
 * [Dataset3_classification.ipynb](task2/Classification_TrainedModel/Dataset2_classification.ipynb)
-  * **Description:** Desribe what the program does.
+  * **Description:** Run this program to visualize feature classification with SVM on dataset 3 with the trained model. This code trains and evaluates the performance of an SVM classifier on features extracted from a ResNet-18 model trained from scratch. Simply run each cell in the .ipynb file in order to see the output report and matrix.
  
 ### Execution Instructions
 
