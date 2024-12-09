@@ -35,7 +35,7 @@ To successfully run the code, you will need the following libraries:
 * pip
   ```sh
   pip install numpy
-  pip install matplotlib
+  pip install matplotlib, seaborn 
   pip install scikit-learn
   pip install scikit-image
   pip install opencv-python
@@ -65,9 +65,16 @@ Alternatively, these datasets can be found in the "data" repository as 1, 2, and
 
 ## Task 2: Encoder Transfer 
 
-### Model Evaluation on Test Dataset 
+### Encoder Evaluation on Test Dataset 
 
-* [program_name.py](#)
+* [isolate_features.py](task2/isolate_features.py)
+  * **Description:** Run this program to visualize feature extraction on datasets 2 and 3 using the t-SNE method. The program freezes the convolutional layers of the pre-trained ResNet-18 model and analyses encoder performance on these datasets. To apply the program to test_samples, please modify the data_path variable to '../test_samples'. Otherwise, run the program as is to see feature extraction performance. 
+ 
+### Samples Classification 
+* [Dataset2_classification.ipynb](task2/Classification_TrainedModel/Dataset2_classification.ipynb)
+  * **Description:** Desribe what the program does.
+ 
+* [Dataset3_classification.ipynb](task2/Classification_TrainedModel/Dataset2_classification.ipynb)
   * **Description:** Desribe what the program does.
  
 ### Execution Instructions
